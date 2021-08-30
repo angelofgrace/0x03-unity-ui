@@ -35,7 +35,10 @@ public class PlayerController : MonoBehaviour
 
         rigid.AddForce (moveDirection * speed);
 
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
     }
 
     void OnTriggerEnter(Collider other)
