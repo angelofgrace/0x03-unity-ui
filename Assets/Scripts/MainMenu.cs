@@ -42,13 +42,13 @@ public class MainMenu : MonoBehaviour
 
     public void OptionsMenuOpen()
     {
-        mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void MainMenuOpen()
     {
-        optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
+        optionsMenu.SetActive(false);
     }
 }
