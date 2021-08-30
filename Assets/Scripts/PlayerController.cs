@@ -35,10 +35,7 @@ public class PlayerController : MonoBehaviour
 
         rigid.AddForce (moveDirection * speed);
 
-        if (health == 0)
-        {
-            SceneManager.LoadScene(scene.name);
-        }
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -55,6 +52,11 @@ public class PlayerController : MonoBehaviour
             health -= 1;
             /// Debug.Log("Health: " + health);
             this.SetHealthText();
+            if (health == 0)
+            {
+                StartCoroutine(LoadScene(3));
+                
+            }
         }
         if (other.gameObject.tag == "Goal")
         {
@@ -80,6 +82,21 @@ public class PlayerController : MonoBehaviour
         winLoseBG.color = Color.green;
         winLoseText.text = string.Format("You Win!");
         winLoseText.color = Color.black;
+    }
+
+    void LoseOutcome()
+    {
+        outcomeBG.SetActive(true);
+        winLoseBG.color = Color.red;
+        winLoseText.text = string.Format("Game Over!");
+        winLoseText.color = Color.white;
+    }
+
+    IEnumerator LoadScene(float seconds)
+    {
+        LoseOutcome();
+        yield return new WaitForSecondsRealtime(seconds);
+        SceneManager.LoadScene(scene.name);
     }
 
 }
