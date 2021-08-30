@@ -377,6 +377,7 @@ MonoBehaviour:
   mazeScene:
     m_Handle: 0
   playButton: {fileID: 119781561}
+  quitButton: {fileID: 1004167430}
 --- !u!1 &537384642
 GameObject:
   m_ObjectHideFlags: 0
