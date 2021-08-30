@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public int health = 5;
     public Text scoreText;
+    public Text healthText;
 
     private Scene scene;
     private Rigidbody rigid;
@@ -48,7 +49,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Trap")
         {
             health -= 1;
-            Debug.Log("Health: " + health);
+            /// Debug.Log("Health: " + health);
+            this.SetHealthText();
         }
         if (other.gameObject.tag == "Goal")
         {
@@ -58,8 +60,13 @@ public class PlayerController : MonoBehaviour
 
     void SetScoreText()
     {
-        scoreText.text = string.Format("Score = {0}", score);
+        scoreText.text = string.Format("Score: {0}", score);
 
+    }
+
+    void SetHealthText()
+    {
+        healthText.text = string.Format("Health: {0}", health);
     }
 
 }
