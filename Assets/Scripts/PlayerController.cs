@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public int health = 5;
+    public Text scoreText;
 
     private Scene scene;
     private Rigidbody rigid;
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Pickup")
         {
             score += 1;
-            Debug.Log("Score: " + score);
+            /// Debug.Log("Score: " + score);
+            this.SetScoreText();
             other.gameObject.SetActive(false);
         }
         if (other.gameObject.tag == "Trap")
@@ -52,4 +55,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("You win!");
         }
     }
+
+    void SetScoreText()
+    {
+        scoreText.text = string.Format("Score = {0}", score);
+
+    }
+
 }
